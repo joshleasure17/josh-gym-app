@@ -1,69 +1,74 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#4b1f6f" />
-  <title>Josh's Gym Plan</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <style>
-    :root{--bg:#111;--card:#1b1b1f;--muted:#aaa;--text:#fff;--accent:#7b3fb8;--accent2:#b78ae0;--ok:#2f9e44}
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#241033,#111 35%);color:var(--text)}
-    .wrap{max-width:760px;margin:auto;padding:16px 14px 90px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-    h1{font-size:1.6rem;margin:8px 0} .sub{color:var(--muted);font-size:.95rem}
-    .tabs{display:flex;gap:8px;overflow:auto;padding:12px 0}.tab{border:0;border-radius:999px;padding:10px 14px;background:#2a2530;color:#ddd;white-space:nowrap}
-    .tab.active{background:var(--accent);color:#fff}.card{background:rgba(27,27,31,.96);border:1px solid #342d3d;border-radius:18px;padding:14px;margin:12px 0;box-shadow:0 8px 22px rgba(0,0,0,.22)}
-    .row{display:grid;grid-template-columns:1fr 78px 78px 42px;gap:8px;align-items:center;margin-top:10px}
-    .name{font-weight:700}.meta{color:var(--muted);font-size:.86rem}.row input{width:100%;padding:10px;border-radius:10px;border:1px solid #444;background:#121217;color:#fff}
-    .check{width:34px;height:34px;border-radius:10px;border:1px solid #555;background:#18181d;color:white;font-size:18px}.check.done{background:var(--ok);border-color:var(--ok)}
-    .elliptical{display:grid;grid-template-columns:1fr 1fr;gap:10px}.big{font-size:1.7rem;font-weight:800}.progress{height:12px;background:#2a2a2f;border-radius:999px;overflow:hidden;margin-top:10px}
-    .bar{height:100%;background:var(--accent2);width:0}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:12px;padding:12px;background:var(--accent);color:#fff;font-weight:700}
-    .btn.secondary{background:#2b2830}.footer{position:fixed;left:0;right:0;bottom:0;background:#151217ee;border-top:1px solid #302736;padding:10px;backdrop-filter:blur(10px)}
-    .footer .inner{max-width:760px;margin:auto;display:flex;gap:8px}.footer button{flex:1}.tiny{font-size:.78rem;color:#999}.sectionTitle{font-size:1.05rem;font-weight:800;margin:0 0 4px}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#4b1f6f">
+<title>Josh's Gym Plan</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#0f0f12;--card:#1a1a20;--card2:#23202a;--text:#fff;--muted:#aaa;--accent:#7b3fb8;--accent2:#b78ae0;--ok:#2f9e44;--danger:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#241033,#101013 32%);color:var(--text)}
+.wrap{max-width:820px;margin:auto;padding:16px 14px 100px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}h1{font-size:1.65rem;margin:6px 0}.sub,.meta,.tiny{color:var(--muted)}.tiny{font-size:.8rem}
+.tabs,.navtabs{display:flex;gap:8px;overflow:auto;padding:12px 0}.tab,.navtab{border:0;border-radius:999px;padding:10px 14px;background:#2a2530;color:#ddd;white-space:nowrap}.active{background:var(--accent)!important;color:#fff!important}
+.card{background:rgba(26,26,32,.98);border:1px solid #352d3d;border-radius:18px;padding:14px;margin:12px 0;box-shadow:0 8px 22px rgba(0,0,0,.2)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{background:var(--card2);border-radius:14px;padding:12px}.big{font-size:1.7rem;font-weight:800}.sectionTitle{font-size:1.05rem;font-weight:800;margin-bottom:4px}
+.exercise{padding:12px 0;border-top:1px solid #2f2a34}.exercise:first-child{border-top:0}.row{display:grid;grid-template-columns:1fr 82px 82px 42px;gap:8px;align-items:center;margin-top:10px}
+input,textarea,select{width:100%;padding:10px;border-radius:10px;border:1px solid #444;background:#121217;color:#fff}.check{width:36px;height:36px;border-radius:10px;border:1px solid #555;background:#18181d;color:#fff;font-size:18px}.check.done{background:var(--ok);border-color:var(--ok)}
+.btn{border:0;border-radius:12px;padding:12px;background:var(--accent);color:#fff;font-weight:700}.secondary{background:#2b2830}.danger{background:var(--danger)}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.progress{height:11px;background:#2a2a2f;border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--accent2)}
+.historyItem{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #2d2831}.historyItem:first-child{border-top:0}.clickable{cursor:pointer}.pr{display:inline-block;background:#3d2b4e;color:#e9d5ff;border-radius:999px;padding:4px 8px;font-size:.75rem;margin-left:6px}.chart{width:100%;height:180px;background:#131318;border-radius:14px}
+.footer{position:fixed;left:0;right:0;bottom:0;background:#151217ee;border-top:1px solid #302736;padding:10px;backdrop-filter:blur(10px)}.footer .inner{max-width:820px;margin:auto;display:flex;gap:8px}.footer button{flex:1}
+@media(max-width:620px){.grid3{grid-template-columns:1fr}.row{grid-template-columns:1fr 72px 72px 40px}.top{flex-direction:column}}
+</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>Josh's Gym Plan</h1><div class="sub">Planet Fitness • 7 days • 60 min elliptical daily</div></div><div class="tiny" id="streak"></div></div>
-  <div class="tabs" id="tabs"></div>
-  <div id="content"></div>
+<div class="top"><div><h1>Josh's Gym Plan</h1><div class="sub">Planet Fitness • daily history • progress tracking</div></div><div class="tiny" id="status"></div></div>
+<div class="navtabs"><button id="navToday" class="navtab active" onclick="view='today';render()">Today</button><button id="navHistory" class="navtab" onclick="view='history';render()">History</button><button id="navProgress" class="navtab" onclick="view='progress';render()">Progress</button><button id="navData" class="navtab" onclick="view='data';render()">Backup</button></div>
+<div id="content"></div>
 </div>
-<div class="footer"><div class="inner"><button class="btn secondary" onclick="exportData()">Backup</button><button class="btn" onclick="showProgress()">Progress</button></div></div>
+<div class="footer"><div class="inner"><button class="btn secondary" onclick="goPrev()">◀ Day</button><button class="btn" onclick="goToday()">Today</button><button class="btn secondary" onclick="goNext()">Day ▶</button></div></div>
 <script>
-const plan = {
-Monday:{focus:"Chest + Triceps",ex:[["Smith Machine Bench Press","3 x 8-10"],["Incline Chest Press Machine","3 x 10"],["Pec Deck","3 x 12"],["Cable Triceps Pushdown","3 x 12"],["Overhead Cable Triceps Extension","3 x 10"]]},
-Tuesday:{focus:"Back + Biceps",ex:[["Lat Pulldown","3 x 10"],["Seated Row Machine","3 x 10"],["Assisted Pull-Up Machine","3 x 8-10"],["Reverse Pec Deck","3 x 12"],["Cable Curl","3 x 10"],["Dumbbell Hammer Curl","3 x 10"]]},
-Wednesday:{focus:"Legs",ex:[["Leg Press","4 x 10"],["Smith Machine Squat","3 x 8-10"],["Seated Leg Curl","3 x 12"],["Leg Extension","3 x 12"],["Calf Raise on Leg Press","4 x 15"]]},
-Thursday:{focus:"Core + Recovery",ex:[["Ab Crunch Machine","3 x 12-15"],["Cable Woodchop","3 x 10/side"],["Plank","3 x 30-60 sec"],["Dead Bug","3 x 10/side"]]},
-Friday:{focus:"Shoulders + Arms",ex:[["Shoulder Press Machine","3 x 10"],["Dumbbell Lateral Raise","3 x 12"],["Reverse Pec Deck","3 x 12"],["Cable Curl","3 x 10"],["Rope Triceps Pushdown","3 x 10"],["Preacher Curl Machine","2 x 12"],["Triceps Press Machine","2 x 12"]]},
-Saturday:{focus:"Full Body",ex:[["Smith Machine Squat","3 x 8"],["Chest Press Machine","3 x 10"],["Lat Pulldown","3 x 10"],["Dumbbell Romanian Deadlift","3 x 10"],["Shoulder Press Machine","2 x 10"],["Cable Row","2 x 12"]]},
-Sunday:{focus:"Active Recovery",ex:[["Mobility / Stretching","10-15 min"],["Easy Walk","Optional"]]}
+const plan={
+0:{name:"Sunday",focus:"Active Recovery",ex:[["Mobility / Stretching","10-15 min"],["Easy Walk","Optional"]]},
+1:{name:"Monday",focus:"Chest + Triceps",ex:[["Smith Machine Bench Press","3 x 8-10"],["Incline Chest Press Machine","3 x 10"],["Pec Deck","3 x 12"],["Cable Triceps Pushdown","3 x 12"],["Overhead Cable Triceps Extension","3 x 10"]]},
+2:{name:"Tuesday",focus:"Back + Biceps",ex:[["Lat Pulldown","3 x 10"],["Seated Row Machine","3 x 10"],["Assisted Pull-Up Machine","3 x 8-10"],["Reverse Pec Deck","3 x 12"],["Cable Curl","3 x 10"],["Dumbbell Hammer Curl","3 x 10"]]},
+3:{name:"Wednesday",focus:"Legs",ex:[["Leg Press","4 x 10"],["Smith Machine Squat","3 x 8-10"],["Seated Leg Curl","3 x 12"],["Leg Extension","3 x 12"],["Calf Raise on Leg Press","4 x 15"]]},
+4:{name:"Thursday",focus:"Core + Recovery",ex:[["Ab Crunch Machine","3 x 12-15"],["Cable Woodchop","3 x 10/side"],["Plank","3 x 30-60 sec"],["Dead Bug","3 x 10/side"]]},
+5:{name:"Friday",focus:"Shoulders + Arms",ex:[["Shoulder Press Machine","3 x 10"],["Dumbbell Lateral Raise","3 x 12"],["Reverse Pec Deck","3 x 12"],["Cable Curl","3 x 10"],["Rope Triceps Pushdown","3 x 10"],["Preacher Curl Machine","2 x 12"],["Triceps Press Machine","2 x 12"]]},
+6:{name:"Saturday",focus:"Full Body",ex:[["Smith Machine Squat","3 x 8"],["Chest Press Machine","3 x 10"],["Lat Pulldown","3 x 10"],["Dumbbell Romanian Deadlift","3 x 10"],["Shoulder Press Machine","2 x 10"],["Cable Row","2 x 12"]]}
 };
-const days=Object.keys(plan); let selected=days[new Date().getDay()===0?6:new Date().getDay()-1];
-const storeKey="joshGymDataV2"; let data=JSON.parse(localStorage.getItem(storeKey)||"{}");
-function save(){localStorage.setItem(storeKey,JSON.stringify(data))}
-function dayKey(d){return d}
-function ensure(d){data[d]=data[d]||{elliptical:0,level:"",notes:"",ex:{},completed:false,date:new Date().toISOString().slice(0,10)};return data[d]}
-function renderTabs(){tabs.innerHTML=days.map(d=>'<button class="tab '+(d===selected?'active':'')+'" onclick="selected=\''+d+'\';render()">'+d.slice(0,3)+'</button>').join("")}
-function lastFor(name,currentDay){for(let i=days.indexOf(currentDay)-1;i>=0;i--){let v=data[days[i]]?.ex?.[name];if(v&&(v.weight||v.reps))return v}return null}
-function render(){
- renderTabs(); const p=plan[selected], s=ensure(selected);
- let exHtml=p.ex.map(([name,target])=>{const e=s.ex[name]||{};const last=lastFor(name,selected);return '<div class="card"><div class="name">'+name+'</div><div class="meta">'+target+(last?' • Last: '+(last.weight||'-')+' lb x '+(last.reps||'-'):'')+'</div><div class="row"><div></div><input placeholder="Weight" inputmode="decimal" value="'+(e.weight||'')+'" onchange="updEx(\''+esc(name)+'\',\'weight\',this.value)"><input placeholder="Reps" inputmode="numeric" value="'+(e.reps||'')+'" onchange="updEx(\''+esc(name)+'\',\'reps\',this.value)"><button class="check '+(e.done?'done':'')+'" onclick="toggleEx(\''+esc(name)+'\')">'+(e.done?'✓':'')+'</button></div></div>'}).join("");
- const pct=Math.min(100,Math.round((Number(s.elliptical||0)/60)*100));
- content.innerHTML='<div class="card"><div class="sectionTitle">'+selected+' — '+p.focus+'</div><div class="meta">Strength work + daily elliptical goal</div></div>'
- +'<div class="card"><div class="sectionTitle">Elliptical</div><div class="big">'+(s.elliptical||0)+' / 60 min</div><div class="progress"><div class="bar" style="width:'+pct+'%"></div></div><div class="elliptical" style="margin-top:12px"><input placeholder="Minutes" inputmode="numeric" value="'+(s.elliptical||'')+'" onchange="upd(\'elliptical\',this.value)"><input placeholder="Resistance / Level" value="'+(s.level||'')+'" onchange="upd(\'level\',this.value)"></div></div>'
- +exHtml+'<div class="card"><div class="sectionTitle">Notes</div><textarea style="width:100%;min-height:90px;border-radius:12px;padding:10px;background:#121217;color:#fff;border:1px solid #444" onchange="upd(\'notes\',this.value)">'+(s.notes||'')+'</textarea><div class="actions" style="margin-top:10px"><button class="btn secondary" onclick="resetDay()">Reset Day</button><button class="btn" onclick="finishDay()">Finish Workout</button></div></div>';
- streak.textContent=(data[selected]?.completed?'Completed ✓':'');
-}
+const storeKey="joshGymHistoryV3";
+let db=JSON.parse(localStorage.getItem(storeKey)||'{"workouts":{},"bodyWeight":[],"settings":{"ellipticalGoal":60}}');
+let currentDate=new Date(); currentDate.setHours(12,0,0,0); let view="today";
+function iso(d){return d.toISOString().slice(0,10)}
+function fmt(d){return d.toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric",year:"numeric"})}
+function workout(date=currentDate){const k=iso(date); if(!db.workouts[k]) db.workouts[k]={date:k,elliptical:0,level:"",notes:"",completed:false,ex:{}}; return db.workouts[k]}
+function save(){localStorage.setItem(storeKey,JSON.stringify(db))}
 function esc(s){return s.replaceAll("\\","\\\\").replaceAll("'","\\'")}
-function upd(k,v){ensure(selected)[k]=v;save();render()}
-function updEx(n,k,v){let s=ensure(selected);s.ex[n]=s.ex[n]||{};s.ex[n][k]=v;save()}
-function toggleEx(n){let s=ensure(selected);s.ex[n]=s.ex[n]||{};s.ex[n].done=!s.ex[n].done;save();render()}
-function finishDay(){ensure(selected).completed=true;save();render()}
-function resetDay(){if(confirm("Reset this day's entries?")){delete data[selected];save();render()}}
-function showProgress(){let c=days.filter(d=>data[d]?.completed).length;let mins=days.reduce((a,d)=>a+Number(data[d]?.elliptical||0),0);alert("Workouts completed: "+c+"/7\nElliptical minutes logged: "+mins+"\nElliptical goal: 420 min/week")}
-function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="josh-gym-backup.json";a.click();URL.revokeObjectURL(a.href)}
-if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+function allWorkouts(){return Object.values(db.workouts).sort((a,b)=>a.date.localeCompare(b.date))}
+function previousFor(name,dateKey){return allWorkouts().filter(w=>w.date<dateKey&&w.ex&&w.ex[name]&&(w.ex[name].weight||w.ex[name].reps)).pop()?.ex[name]||null}
+function bestFor(name){let best=null; for(const w of allWorkouts()){const e=w.ex?.[name]; if(!e)continue; const wt=Number(e.weight||0),reps=Number(e.reps||0); if(!best||wt>best.weight||(wt===best.weight&&reps>best.reps))best={weight:wt,reps,date:w.date}} return best}
+function currentStreak(){const set=new Set(allWorkouts().filter(w=>w.completed).map(w=>w.date)); let d=new Date();d.setHours(12,0,0,0);let s=0; while(set.has(iso(d))){s++;d.setDate(d.getDate()-1)}return s}
+function render(){["Today","History","Progress","Data"].forEach(n=>document.getElementById("nav"+n)?.classList.toggle("active",view===n.toLowerCase())); status.textContent=currentStreak()+" day streak"; if(view==="today")renderToday(); if(view==="history")renderHistory(); if(view==="progress")renderProgress(); if(view==="data")renderData()}
+function renderToday(){const p=plan[currentDate.getDay()],w=workout(),goal=Number(db.settings.ellipticalGoal||60),pct=Math.min(100,Math.round(Number(w.elliptical||0)/goal*100)); let html='<div class="card"><div class="sectionTitle">'+fmt(currentDate)+'</div><div class="meta">'+p.focus+'</div></div>';
+html+='<div class="card"><div class="sectionTitle">Elliptical</div><div class="big">'+(w.elliptical||0)+' / '+goal+' min</div><div class="progress"><div class="bar" style="width:'+pct+'%"></div></div><div class="grid2" style="margin-top:12px"><input inputmode="numeric" placeholder="Minutes" value="'+(w.elliptical||'')+'" onchange="upd(\'elliptical\',this.value)"><input placeholder="Resistance / Level" value="'+(w.level||'')+'" onchange="upd(\'level\',this.value)"></div></div>';
+html+='<div class="card"><div class="sectionTitle">Workout</div>';
+for(const [name,target] of p.ex){const e=w.ex[name]||{},prev=previousFor(name,w.date),best=bestFor(name);let pr=''; if(best&&(Number(e.weight||0)>best.weight||(Number(e.weight||0)===best.weight&&Number(e.reps||0)>best.reps)))pr='<span class="pr">New PR</span>'; html+='<div class="exercise"><div><b>'+name+'</b>'+pr+'</div><div class="meta">'+target+(prev?' • Last: '+(prev.weight||'-')+' lb × '+(prev.reps||'-'):'')+(best?' • Best: '+best.weight+' lb × '+best.reps:'')+'</div><div class="row"><div></div><input inputmode="decimal" placeholder="Weight" value="'+(e.weight||'')+'" onchange="updEx(\''+esc(name)+'\',\'weight\',this.value)"><input inputmode="numeric" placeholder="Reps" value="'+(e.reps||'')+'" onchange="updEx(\''+esc(name)+'\',\'reps\',this.value)"><button class="check '+(e.done?'done':'')+'" onclick="toggleEx(\''+esc(name)+'\')">'+(e.done?'✓':'')+'</button></div></div>'}
+html+='</div><div class="card"><div class="sectionTitle">Notes</div><textarea placeholder="How did the workout feel?" onchange="upd(\'notes\',this.value)">'+(w.notes||'')+'</textarea><div class="actions" style="margin-top:10px"><button class="btn secondary" onclick="clearDate()">Clear Date</button><button class="btn" onclick="finish()">Finish Workout</button></div></div>'; content.innerHTML=html}
+function renderHistory(){const ws=allWorkouts().slice().reverse(); let html='<div class="card"><div class="sectionTitle">Workout History</div><div class="meta">Every saved day stays here unless you clear browser/site data.</div>'; if(!ws.length)html+='<p class="meta">No workouts saved yet.</p>'; for(const w of ws){const d=new Date(w.date+'T12:00:00');const exercises=Object.values(w.ex||{}).filter(x=>x.done||x.weight||x.reps).length;html+='<div class="historyItem clickable" onclick="openDate(\''+w.date+'\')"><div><b>'+fmt(d)+'</b><div class="meta">'+plan[d.getDay()].focus+' • '+exercises+' exercises logged</div></div><div style="text-align:right"><b>'+Number(w.elliptical||0)+' min</b><div class="meta">'+(w.completed?'Completed ✓':'Saved')+'</div></div></div>'} html+='</div>';content.innerHTML=html}
+function renderProgress(){const ws=allWorkouts();const completed=ws.filter(w=>w.completed).length,mins=ws.reduce((a,w)=>a+Number(w.elliptical||0),0),exerciseNames=[...new Set(ws.flatMap(w=>Object.keys(w.ex||{})))];let prs=exerciseNames.map(n=>({n,b:bestFor(n)})).filter(x=>x.b).sort((a,b)=>b.b.weight-a.b.weight);
+let html='<div class="grid3"><div class="metric"><div class="meta">Completed</div><div class="big">'+completed+'</div><div class="tiny">workouts</div></div><div class="metric"><div class="meta">Elliptical</div><div class="big">'+mins+'</div><div class="tiny">minutes logged</div></div><div class="metric"><div class="meta">Current streak</div><div class="big">'+currentStreak()+'</div><div class="tiny">days</div></div></div>';
+html+='<div class="card"><div class="sectionTitle">Personal Records</div>'; if(!prs.length)html+='<p class="meta">Log weights and reps and your PR board will build automatically.</p>'; for(const x of prs)html+='<div class="historyItem"><div><b>'+x.n+'</b><div class="meta">'+x.b.date+'</div></div><div><b>'+x.b.weight+' lb × '+x.b.reps+'</b></div></div>'; html+='</div>';
+html+='<div class="card"><div class="sectionTitle">Body Weight</div><div class="grid2"><input id="bwInput" inputmode="decimal" placeholder="Weight"><button class="btn" onclick="addWeight()">Save Today\'s Weight</button></div>'; const vals=db.bodyWeight.slice().sort((a,b)=>a.date.localeCompare(b.date)); if(vals.length){html+='<div style="margin-top:12px" class="meta">Latest: '+vals[vals.length-1].weight+' lb'; if(vals.length>1){const diff=(Number(vals[vals.length-1].weight)-Number(vals[0].weight)).toFixed(1);html+=' • Change: '+(diff>0?'+':'')+diff+' lb'} html+='</div>'} html+='</div>';content.innerHTML=html}
+function renderData(){content.innerHTML='<div class="card"><div class="sectionTitle">Backup & Restore</div><p class="meta">Your workout history is saved on this device in the browser. Make a backup occasionally so you can restore everything if you change phones or clear browser data.</p><div class="actions"><button class="btn" onclick="exportData()">Download Backup</button><button class="btn secondary" onclick="document.getElementById(\'restoreFile\').click()">Restore Backup</button></div><input id="restoreFile" type="file" accept="application/json" style="display:none" onchange="restoreData(this.files[0])"></div><div class="card"><div class="sectionTitle">Elliptical Goal</div><div class="grid2"><input id="goalInput" inputmode="numeric" value="'+(db.settings.ellipticalGoal||60)+'"><button class="btn" onclick="saveGoal()">Save Goal</button></div></div><div class="card"><div class="sectionTitle">Storage</div><div class="meta">'+allWorkouts().length+' dated workout records saved on this device.</div></div>'}
+function upd(k,v){workout()[k]=v;save();renderToday()} function updEx(n,k,v){const w=workout();w.ex[n]=w.ex[n]||{};w.ex[n][k]=v;save()} function toggleEx(n){const w=workout();w.ex[n]=w.ex[n]||{};w.ex[n].done=!w.ex[n].done;save();renderToday()} function finish(){workout().completed=true;save();render()} function clearDate(){if(confirm("Clear all entries for "+fmt(currentDate)+"?")){delete db.workouts[iso(currentDate)];save();render()}}
+function openDate(k){currentDate=new Date(k+'T12:00:00');view='today';render()} function goPrev(){currentDate.setDate(currentDate.getDate()-1);view='today';render()} function goNext(){currentDate.setDate(currentDate.getDate()+1);view='today';render()} function goToday(){currentDate=new Date();currentDate.setHours(12,0,0,0);view='today';render()}
+function addWeight(){const v=document.getElementById('bwInput').value;if(!v)return;const k=iso(new Date());const old=db.bodyWeight.find(x=>x.date===k);if(old)old.weight=v;else db.bodyWeight.push({date:k,weight:v});save();renderProgress()}
+function saveGoal(){db.settings.ellipticalGoal=Number(document.getElementById('goalInput').value||60);save();renderData()}
+function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='josh-gym-backup-'+iso(new Date())+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function restoreData(file){if(!file)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.workouts)throw 0;db=x;save();alert("Backup restored.");render()}catch(e){alert("That backup file could not be read.")}};r.readAsText(file)}
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 render();
 </script>
 </body>
