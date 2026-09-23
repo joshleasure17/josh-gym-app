@@ -1,9 +1,14 @@
 {
   "name":"Josh's Gym Plan",
-  "short_name":"Gym Plan",
+  "short_name":"Josh Gym",
+  "id":"./",
   "start_url":"./",
+  "scope":"./",
   "display":"standalone",
   "background_color":"#111111",
   "theme_color":"#4b1f6f",
-  "icons":[]
+  "description":"Josh's Planet Fitness workout and progress tracker.",
+  "icons":[
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
 }
