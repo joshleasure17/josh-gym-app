@@ -1,5 +1,5 @@
-const CACHE="josh-gym-v16";
-const STATIC=["./manifest.webmanifest?v=3","./app-icon.svg?v=3"];
+const CACHE="josh-gym-v17";
+const STATIC=["./manifest.webmanifest?v=17","./app-icon.svg?v=17"];
 self.addEventListener("install",e=>{
   self.skipWaiting();
   e.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC)));
