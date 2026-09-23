@@ -65,7 +65,7 @@ let db=JSON.parse(localStorage.getItem(storeKey)||'{"workouts":{},"bodyWeight":[
 db.workouts=db.workouts||{};db.bodyWeight=db.bodyWeight||[];db.settings=db.settings||{ellipticalGoal:60};if(!db.settings.ellipticalGoal)db.settings.ellipticalGoal=60;
 let currentDate=new Date();currentDate.setHours(12,0,0,0);let view="today";let historyFilter="";
 function unlockApp(){const v=document.getElementById("pinInput").value;if(v===APP_PIN){sessionStorage.setItem("joshGymUnlocked","1");lockScreen.classList.add("hidden");app.classList.remove("hidden");render()}else{pinMsg.textContent="Incorrect PIN.";pinInput.value="";pinInput.focus()}}
-function initLock(){if(sessionStorage.getItem("joshGymUnlocked")==="1"){lockScreen.classList.add("hidden");app.classList.remove("hidden");render()}else{pinInput.focus()}};document.addEventListener("keydown",e=>{if(e.key==="Enter"&&!lockScreen.classList.contains("hidden"))unlockApp()});
+function initLock(){sessionStorage.removeItem("joshGymUnlocked");lockScreen.classList.remove("hidden");app.classList.add("hidden");setTimeout(()=>pinInput.focus(),50)};document.addEventListener("keydown",e=>{if(e.key==="Enter"&&!lockScreen.classList.contains("hidden"))unlockApp()});
 function iso(d){return d.toISOString().slice(0,10)}function fmt(d){return d.toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric",year:"numeric"})}
 function workout(date=currentDate){const k=iso(date);if(!db.workouts[k])db.workouts[k]={date:k,elliptical:0,level:"",notes:"",completed:false,ex:{}};return db.workouts[k]}
 function save(){localStorage.setItem(storeKey,JSON.stringify(db))}
