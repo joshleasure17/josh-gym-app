@@ -2,7 +2,7 @@
   "name":"Josh's Gym Plan",
   "short_name":"Josh Gym",
   "id":"./",
-  "start_url":"./?v=3",
+  "start_url":"./?v=11",
   "scope":"./",
   "display":"standalone",
   "background_color":"#111111",
